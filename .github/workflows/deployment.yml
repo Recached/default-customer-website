@@ -16,6 +16,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           tags: "Apache-PHP"
+          dockerfile: Dockerfile-Apache2-PHP
+
       - name: Build and publish NGINX image
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
@@ -23,3 +25,4 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           tags: "nginx"
+          dockerfile: Dockerfile-NGINX

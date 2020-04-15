@@ -1,0 +1,6 @@
+FROM nginx:latest
+
+WORKDIR /usr/share/nignx/html
+COPY ./src/NGINX .
+
+EXPOSE 80

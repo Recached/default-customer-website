@@ -1,0 +1,11 @@
+FROM node:latest
+
+WORKDIR /usr/src/app
+COPY ./src/node .
+
+RUN npm install
+
+EXPOSE 8000
+
+# because of this, node containers need scheduled restarts
+CMD [ "node", "server.js" ]

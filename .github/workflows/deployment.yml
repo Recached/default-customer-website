@@ -5,8 +5,29 @@ on:
         branches: [master]
     
 jobs:
-  deploy:
+  deploy-ubuntu:
     runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@master
+      - name: Build and publish Apache2 PHP image
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: nemjit001/default-website
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tags: "Apache-PHP"
+          dockerfile: Dockerfile-Apache2-PHP
+
+      - name: Build and publish NGINX image
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: nemjit001/default-website
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tags: "nginx"
+          dockerfile: Dockerfile-NGINX
+  deploy-arm:
+    runs-on: [ubuntu-18.04-arm8]
     steps:
       - uses: actions/checkout@master
       - name: Build and publish Apache2 PHP image

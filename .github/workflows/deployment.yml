@@ -8,7 +8,8 @@ jobs:
   deploy:
     runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@master
       - name: Build and publish Apache2 PHP image
         uses: elgohr/Publish-Docker-Github-Action@master
         with:

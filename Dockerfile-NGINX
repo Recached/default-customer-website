@@ -1,6 +1,6 @@
 FROM nginx:latest
 
-WORKDIR /usr/share/nignx/html
+WORKDIR /usr/share/nginx/html
 COPY ./src/NGINX .
 COPY ./src/css ./css
 
